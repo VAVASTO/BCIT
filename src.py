@@ -86,31 +86,28 @@ def main():
     
     print('\nЗадание А2')
     res_12_unsorted = []
-    # Перебираем все отделы
+
     for li in lang:
-        # Список сотрудников отдела
+
         l_include = list(filter(lambda i: i[2]==li.name, one_to_many))
-        #print('zzz',d_emps,'\n')
-        # Если отдел не пустой        
+      
         if len(l_include) > 0:
-            # Зарплаты сотрудников отдела
+          
             res_12_unsorted.append((li.name, len(l_include)))
- 
-    # Сортировка по суммарной зарплате
+
     res_12 = sorted(res_12_unsorted, key=itemgetter(1), reverse=True)
     print(res_12)
  
     print('\nЗадание А3')
     res_13 = {}
-    # Перебираем все отделы
+
     for inc in include:
         if 'm' in inc.name:
-            # Список сотрудников отдела
+ 
             d_emps = list(filter(lambda i: i[0]==inc.name, many_to_many))
-            # Только ФИО сотрудников
+
             d_emps_names = [x for _,_,x in d_emps]
-            # Добавляем результат в словарь
-            # ключ - отдел, значение - список фамилий
+        
             res_13[inc.name] = d_emps_names
  
     print(res_13)
